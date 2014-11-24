@@ -1,0 +1,16 @@
+image: toritori0318/dockerfile-fig
+
+env:
+  - PATH=$PWD/bin:$PATH
+  - DOCKER_HOST=tcp://xxx.xxx.xxx.xxx:4243
+  - FIG_FILE=fig-drone.yml
+
+script:
+  - echo 'start!'
+  - fig ps
+  - fig build web
+  - fig up -d
+  - fig run --rm web make test-unit
+  - fig stop
+  - fig rm --force
+  - echo 'end!'

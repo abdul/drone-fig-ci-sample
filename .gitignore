@@ -1,0 +1,15 @@
+.DS_Store
+*-sv*
+*.sv*
+*.log
+tmp/
+*.pyc
+.noseids
+tags
+*.zip
+*.tar.gz
+bench
+node_modules
+_build
+tools
+.coverage

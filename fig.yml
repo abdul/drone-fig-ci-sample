@@ -1,0 +1,13 @@
+web:            # サービス名です。この名前でコンテナにアクセスできます
+  build: .                  # ./Dockerfileを用いビルドする
+  command: python app.py    # ビルド後のコンテナで実行するコマンド
+  ports:
+   - "5000:5000"            # ポートフォワード設定。フォーマットは <ホスト側ポート>:<コンテナ側ポート>
+  volumes:
+   - .:/code                # ボリューム設定。ローカル「.」を コンテナ「/code」に同期
+  links:
+   - redis:redis            # リンク設定。フォーマットは <サービス名>:<エイリアス名>
+  environment:
+   - PYTHONPATH=./
+redis:
+  image: redis 
